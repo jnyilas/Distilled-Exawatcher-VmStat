@@ -1,5 +1,7 @@
 # Distilled-Exawatcher-VmStat
 Tool to statistically analyze Exawatcher VmStat data files to help with CPU capacity planning.
+Provides Mode, Median, Max and Min CPU analysis.
+Can also provide CPU saturation events (when CPU idle time is reported as zero).
 
 ## Usage
     usage: exawatcher_CPU.summary.sh [-s] [-c N] [-d DATE] fileglob

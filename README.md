@@ -29,13 +29,13 @@ Can also provide CPU saturation events (when CPU idle time is reported as zero).
 ### Process all files for 19-June-2024 between 10:00:00 - 10:59:59
 
      … Vmstat.ExaWatcher] > bash ~/proj/exawatcher_CPU.summary.sh 2024_06_19_10
-    -> 2024_06_19_10_15_40_VmstatExaWatcher_e1h2r2ingest01.zdlra.ford.com.dat.bz2:
+    -> 2024_06_19_10_15_40_VmstatExaWatcher_srvr1.joe.org.dat.bz2:
     # Starting Time:	06/19/2024 10:15:40
        Mode CPU RQ:  59.0
      Median CPU RQ:  61.0
         Avg CPU RQ:  61.91           Avg %CPU: 94.32 us 4.42 sy 1.26 id
     Max/Min CPU RQ:  99 / 51     %CPU Max/Min: 97 / 85 us 12 / 2 sy 3 / 0 id
-    -> 2024_06_19_10_45_49_VmstatExaWatcher_e1h2r2ingest01.zdlra.ford.com.dat.bz2:
+    -> 2024_06_19_10_45_49_VmstatExaWatcher_srvr1.joe.org.dat.bz2:
     # Starting Time:	06/19/2024 10:45:49
        Mode CPU RQ:  56.0
      Median CPU RQ:  58.0
@@ -54,19 +54,19 @@ Can also provide CPU saturation events (when CPU idle time is reported as zero).
 ### Process all files for 19-June-2024
 
     ...
-    -> 2024_06_19_21_19_26_VmstatExaWatcher_e1h2r2ingest01.zdlra.ford.com.dat.bz2:
+    -> 2024_06_19_21_19_26_VmstatExaWatcher_srvr1.joe.org.dat.bz2:
     # Starting Time:	06/19/2024 21:19:26
        Mode CPU RQ:  74.0
      Median CPU RQ:  74.0
         Avg CPU RQ:  75.57           Avg %CPU: 91.42 us 7.38 sy 1.13 id
     Max/Min CPU RQ: 115 / 54     %CPU Max/Min: 95 / 84 us 14 / 4 sy 2 / 0 id
-    -> 2024_06_19_21_49_36_VmstatExaWatcher_e1h2r2ingest01.zdlra.ford.com.dat.bz2:
+    -> 2024_06_19_21_49_36_VmstatExaWatcher_srvr1.joe.org.dat.bz2:
     # Starting Time:	06/19/2024 21:49:36
        Mode CPU RQ:  65.0
      Median CPU RQ:  66.0
         Avg CPU RQ:  66.86           Avg %CPU: 93.36 us 5.37 sy 1.21 id
     Max/Min CPU RQ:  95 / 55     %CPU Max/Min: 96 / 88 us 10 / 3 sy 2 / 1 id
-    -> 2024_06_19_22_19_47_VmstatExaWatcher_e1h2r2ingest01.zdlra.ford.com.dat:
+    -> 2024_06_19_22_19_47_VmstatExaWatcher_srvr1.joe.org.dat:
     # Starting Time:	06/19/2024 22:19:47
        Mode CPU RQ:  74.0
      Median CPU RQ:  71.0

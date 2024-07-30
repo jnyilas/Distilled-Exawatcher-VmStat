@@ -1,7 +1,12 @@
 # Distilled-Exawatcher-VmStat
-Tool to statistically analyze Exawatcher VmStat data files to help with CPU capacity planning.
-Provides Mode, Median, Max and Min CPU analysis.
-Can also provide CPU saturation events (when CPU idle time is reported as zero).
+Oracle Engineered Systems provide Exawatcher to collect detailed OS statistics. (A very similar OSWatcher tools can also be installed on any server running Oracle SW).
+In addition, sar(1) can be configured to collect OS metrics on Linux and UNIX. The goal of this tool isn't to replace sar. And there are times where sar is disabled by the sys admin, or no enabled, or just plain faulted. Exawatcher also has built in graphing tools that show detailed charts of OS metrics. And this tool isn't meant to replace those charts, either.
+
+But where those plots fall short is extracting the data in a way that is meaningful to deep dive CPU performance analaysis, map it to work load, and provide proper capacity planning from historical trends. This tool can parse thousands of vmstat measurements and instantly sumamrize it in a meanigful way, if your questions are: _"Do I have enough CPU capacity?" "Is this server overloaded?" "What is my peak CPU demand?" "When is it happening?"_
+
+
+This is a Tool to statistically analyze Exawatcher VmStat data files to help with CPU capacity planning.
+It provides statistical Mode, Median, Max and Min CPU reports, mapped to a time period. It can also provide CPU saturation events (when CPU idle time is reported as zero).
 
 ## Usage
     usage: exawatcher_CPU.summary.sh [-s] [-c N] [-d DATE] fileglob
@@ -82,4 +87,4 @@ Can also provide CPU saturation events (when CPU idle time is reported as zero).
     Max/Min CPU RQ: 142 / 21 ~ 295.83% / 43.75% of 48 HW CPU cores
       %CPU Max/Min:  98 / 43 us  21 /  2 sy  51 /  0 id
 
-_This analysis indicates that the server was overloaded over the month of June!_   
+_This analysis indicates that the server was overloaded over the month of June, and will need workload relief or added CPU cores._   

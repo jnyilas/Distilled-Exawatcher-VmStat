@@ -1,4 +1,7 @@
 # Distilled-Exawatcher-VmStat
+
+Boiling down vmstat reports to capture the essence of CPU workloads.
+
 Oracle Engineered Systems provide Exawatcher to collect detailed OS statistics. (A very similar OSWatcher tools can also be installed on any server running Oracle SW).
 In addition, sar(1) can be configured to collect OS metrics on Linux and UNIX. The goal of this tool isn't to replace sar. And there are times where sar is disabled by the sys admin, or not enabled, or just plain faulted. Exawatcher also has built in graphing tools that show detailed charts of OS metrics. And this tool isn't meant to replace those charts, either.
 
@@ -58,7 +61,7 @@ It provides statistical Mode, Median, Max and Min CPU reports, mapped to a time 
 
 ### Process all files for 19-June-2024
 
-    ...
+     … Vmstat.ExaWatcher] > bash ~/proj/exawatcher_CPU.summary.sh 2024_06_19
     -> 2024_06_19_21_19_26_VmstatExaWatcher_srvr1.joe.org.dat.bz2:
     # Starting Time:	06/19/2024 21:19:26
        Mode CPU RQ:  74.0

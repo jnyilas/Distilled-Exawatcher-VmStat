@@ -5,7 +5,7 @@ Boiling down vmstat reports to capture the essence of CPU workloads.
 Oracle Engineered Systems provide Exawatcher to collect detailed OS statistics. (A very similar OSWatcher tools can also be installed on any server running Oracle SW).
 In addition, sar(1) can be configured to collect OS metrics on Linux and UNIX. The goal of this tool isn't to replace sar. And there are times where sar is disabled by the sys admin, or not enabled, or just plain faulted. Exawatcher also has built in graphing tools that show detailed charts of OS metrics. And this tool isn't meant to replace those charts, either.
 
-But where those plots fall short is extracting the data in a way that is meaningful to deep dive CPU performance analaysis, map it to work load, and provide proper capacity planning from historical trends. This tool can parse thousands of vmstat measurements and instantly sumamrize it in a meanigful way, if your questions are: _"Do I have enough CPU capacity?" "Is this server overloaded?" "What is my peak CPU demand?" "When is it happening?"_
+But where those plots fall short is extracting the data in a way that is meaningful to deep dive CPU performance analysis, map it to work load, and provide proper capacity planning from historical trends. This tool can parse thousands of vmstat measurements and instantly summarize it in a meaningful way, if your questions are: _"Do I have enough CPU capacity?" "Is this server overloaded?" "What is my peak CPU demand?" "When is it happening?"_
 
 
 This is a Tool to statistically analyze Exawatcher VmStat data files to help with CPU capacity planning.
@@ -91,3 +91,13 @@ It provides statistical Mode, Median, Max and Min CPU reports, mapped to a time 
       %CPU Max/Min:  98 / 43 us  21 /  2 sy  51 /  0 id
 
 _This analysis indicates that the server was overloaded over the month of June, and will need workload relief or added CPU cores._   
+
+### Why?
+
+The RQ in the analysis is the key. The mean, mode, and average CPU RQ exceeded the available 48 CPUs. In addition, the max RQ over the month of June was 3x the available processors. "RQ" is short for CPU run queue.
+
+In order to dig deeper, you need to understand the concept of [CPU Load](https://en.wikipedia.org/wiki/Load_(computing) "Load"). 
+
+If too many processes are on CPU scheduler requesting execution compared to available CPU processing cores, the system is overloaded. Once overloaded, the kernel scheduler will cycle through processes which require CPU execution and place them into an execution queue. This on and off cycling of processes requiring CPU execution means the system is not running efficiently. Increased latency, slower results. Or worst case, system crash. In order to fix this, either the workload needs to shrink, or the available processing cores needs to be increased.
+
+This tool has an option (-c) to set the CPU core count size to match your server. It is an option because usually the analysis is not run on the actual server, but your own laptop or VM. So please set that properly to match where CPU count of where the Exawatcher data was sourced.

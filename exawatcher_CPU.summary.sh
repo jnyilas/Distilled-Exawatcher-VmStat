@@ -6,7 +6,7 @@
 ## Prototyped and conceptualized 13-June-2024
 
 #
-# $Id: exawatcher_CPU.summary.sh,v 1.5 2024/07/29 19:35:57 jnyilas Exp $
+# $Id: exawatcher_CPU.summary.sh,v 1.6 2025/05/01 01:09:19 jnyilas Exp $
 #
 
 # Synopsis
@@ -82,9 +82,9 @@ myawk()
 		#print "Current:" srq_array[k]
 		#print "Mode:Cnt" mode":"hic
 	     }
-	     printf ("   Mode CPU RQ: %5.1f\n",mode)
-	     printf (" Median CPU RQ: %5.1f\n",median)
-	     printf ("    Avg CPU RQ: %6.2f           Avg %CPU: %3.2f us %3.2f sy %3.2f id\n",i/c, us/c, sy/c, id/c)
+	     printf ("   Mode CPU RQ: %5.2f\n",mode)
+	     printf (" Median CPU RQ: %5.2f\n",median)
+	     printf ("    Avg CPU RQ: %5.2f           Avg %CPU: %3.2f us %3.2f sy %3.2f id\n",i/c, us/c, sy/c, id/c)
 	     printf ("Max/Min CPU RQ: %3d / %d     %CPU Max/Min: %d / %d us %d / %d sy %d / %d id\n",rq_max, rq_min, us_max, us_min, sy_max, sy_min, idl_max, idl_min)}'
 }
 
@@ -136,10 +136,10 @@ awktally()
 	     printf ("\nVmstatExaWatcher Data Set Summary of %d input files:\n",t)
 	     printf ("    Start Time: %s  <-->   End Time: %s\n", stime[0], stime[t-1])	
 	     if (mode==0) printf ("   Mode CPU RQ: none\n")
-	     else printf ("   Mode CPU RQ: %4.2f ~ %3.2f%% of "'"${cpu_cnt}"'" HW CPU cores\n",mode, mode/"'"${cpu_cnt}"'"*100)
-	     printf (" Median CPU RQ: %4.2f ~ %3.2f%% of "'"${cpu_cnt}"'" HW CPU cores\n",median, median/"'"${cpu_cnt}"'"*100)
+	     else printf ("   Mode CPU RQ: %5.2f ~ %3.2f%% of "'"${cpu_cnt}"'" HW CPU cores\n",mode, mode/"'"${cpu_cnt}"'"*100)
+	     printf (" Median CPU RQ: %5.2f ~ %3.2f%% of "'"${cpu_cnt}"'" HW CPU cores\n",median, median/"'"${cpu_cnt}"'"*100)
 	     printf ("    Avg CPU RQ: %5.2f ~ %3.2f%% of "'"${cpu_cnt}"'" HW CPU cores\n",i/c, (i/c)/"'"${cpu_cnt}"'"*100)
-	     printf ("      Avg %CPU: %3.2f us %3.2f sy %3.2f id\n", us/c, sy/c, id/c)
+	     printf ("      Avg %CPU: %5.2f us %3.2f sy %3.2f id\n", us/c, sy/c, id/c)
 	     printf ("Max/Min CPU RQ: %3d /%3d ~ %3.2f%% / %.2f%% of "'"${cpu_cnt}"'" HW CPU cores\n",rq_max,rq_min,rq_max/"'"${cpu_cnt}"'"*100,rq_min/"'"${cpu_cnt}"'"*100)
 	     printf ("  %CPU Max/Min: %3d /%3d us %3d /%3d sy %3d /%3d id\n",us_max,us_min,sy_max, sy_min,idl_max,idl_min)}' /tmp/rpt.$$
 }
@@ -213,6 +213,9 @@ for f in $files; do
 	fi
 	if [[ ${f} =~ .bz2$ ]]; then
 		bzcat -c "${f}" | myawk
+	elif [[ ${f} =~ .xz$ ]]; then
+		#newer (ca 2025) exawatcher defaults to XZ(1) compression
+		xzcat -c "${f}" | myawk
 	else
 		myawk < "${f}"
 	fi
